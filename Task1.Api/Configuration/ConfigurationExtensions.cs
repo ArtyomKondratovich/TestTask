@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Task1.Business.Services;
+using Task1.Business.Services.Interfaces;
+using Task1.Business.Services.Implementations;
 using Task1.DataAccess;
 using Task1.DataAccess.Repositories.Implementations;
 using Task1.DataAccess.Repositories.Interfaces;

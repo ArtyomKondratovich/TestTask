@@ -1,7 +1,9 @@
-﻿using Task1.DataAccess.Repositories.Interfaces;
+﻿using Task1.Business.Services.Dtos;
+using Task1.Business.Services.Interfaces;
+using Task1.DataAccess.Repositories.Interfaces;
 using Task1.Domain.Entities;
 
-namespace Task1.Business.Services
+namespace Task1.Business.Services.Implementations
 {
     public class CurrencyService : ICurrencyService
     {

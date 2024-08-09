@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Task1.Business;
-using Task1.Business.Services;
+using Task1.Business.Services.Dtos;
+using Task1.Business.Services.Interfaces;
 using Task1.Domain.Entities;
 
 namespace Task1.Api.Controllers

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1.Api", "Task1\Task1.Api.csproj", "{30E87980-FB8C-48DD-80A6-11A2E39F916C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1.Api", "Task1.Api\Task1.Api.csproj", "{30E87980-FB8C-48DD-80A6-11A2E39F916C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1.DataAccess", "Task1.DataAccess\Task1.DataAccess.csproj", "{0D5A7495-5809-4E0D-BB94-F251169EE784}"
 EndProject

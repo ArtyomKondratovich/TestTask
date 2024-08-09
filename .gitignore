@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# ignore connectin string to db
+Task1.Api/appsettings.personal.json

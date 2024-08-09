@@ -8,7 +8,6 @@ namespace Task1.DataAccess
         public DbSet<Rate> Rates { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
-        {
-        }
+        {}
     }
 }

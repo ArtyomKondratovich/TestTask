@@ -1,4 +1,4 @@
-﻿namespace Task1.Business.Services
+﻿namespace Task1.Business.Services.Dtos
 {
     public class GetRatesDto
     {
