@@ -19,14 +19,14 @@ namespace Task1.Api.Controllers
         [Route("load")]
         public async Task<Response<bool>> LoadRates([FromBody] NewRatesDto dto) 
         {
-            return await _service.LoadRatesAsync(dto);
+            return await _service.SaveRatesAsync(dto);
         }
 
         [HttpPost]
         [Route("get")]
-        public async Task<Response<Rate>> GetRate([FromBody] GetRatesDto dto)
+        public async Task<Response<IEnumerable<Rate>>> GetRate([FromBody] GetRatesDto dto)
         {
-            return await _service.GetRateAsync(dto);
+            return await _service.GetRatesAsync(dto);
         }
     }
 }

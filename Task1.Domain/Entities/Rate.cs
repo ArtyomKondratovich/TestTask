@@ -4,7 +4,6 @@ namespace Task1.Domain.Entities
 {
     public class Rate
     {
-        [Key]
         public int Cur_ID { get; set; }
         public DateTime Date { get; set; }
         public string Cur_Abbreviation { get; set; }

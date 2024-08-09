@@ -1,6 +1,6 @@
 namespace Task1.Tests
 {
-    public class UnitTest1
+    public class ValidationTests
     {
         [Fact]
         public void Test1()

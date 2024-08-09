@@ -2,6 +2,6 @@
 {
     public class NewRatesDto
     {
-        public DateOnly Date { get; set; }
+        public DateTime? Date { get; set; }
     }
 }

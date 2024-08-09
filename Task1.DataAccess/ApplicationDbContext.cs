@@ -9,5 +9,11 @@ namespace Task1.DataAccess
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Rate>()
+                .HasKey(rate => new { rate.Cur_ID, rate.Date });
+        }
     }
 }

@@ -5,7 +5,7 @@ namespace Task1.Business.Services.Interfaces
 {
     public interface ICurrencyService
     {
-        Task<Response<bool>> LoadRatesAsync(NewRatesDto dto);
-        Task<Response<Rate>> GetRateAsync(GetRatesDto dto);
+        Task<Response<bool>> SaveRatesAsync(NewRatesDto dto);
+        Task<Response<IEnumerable<Rate>>> GetRatesAsync(GetRatesDto dto);
     }
 }

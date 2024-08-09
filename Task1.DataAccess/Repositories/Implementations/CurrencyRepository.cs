@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using Task1.DataAccess.Repositories.Interfaces;
 using Task1.Domain.Entities;
 
@@ -27,9 +28,10 @@ namespace Task1.DataAccess.Repositories.Implementations
             return null;
         }
 
-        public async Task CreateRange(IEnumerable<Rate> entites, CancellationToken token = default)
+        public async Task CreateRangeAsync(IEnumerable<Rate> entities, CancellationToken token = default)
         {
-            await _dbContext.Rates.AddRangeAsync(entites, token);
+            await _dbContext.Rates.AddRangeAsync(entities, token);
+            await _dbContext.SaveChangesAsync(token);
         }
 
         public async Task<bool> DeleteAsync(Rate entity, CancellationToken token = default)
@@ -38,13 +40,13 @@ namespace Task1.DataAccess.Repositories.Implementations
 
             if (deletedRate != null) 
             {
-                await _dbContext.SaveChangesAsync();
+                await _dbContext.SaveChangesAsync(token);
             }
 
             return deletedRate != null;
         }
 
-        public async Task<IEnumerable<Rate>> GetByFilterAsync(System.Linq.Expressions.Expression<Func<Rate, bool>> filter, CancellationToken token = default)
+        public async Task<IEnumerable<Rate>> GetByFilterAsync(Expression<Func<Rate, bool>> filter, CancellationToken token = default)
         {
             return await _dbContext.Rates
                 .Where(filter)
@@ -57,7 +59,7 @@ namespace Task1.DataAccess.Repositories.Implementations
                 .FirstOrDefaultAsync(x => x.Cur_ID == id, token);
         }
 
-        public async Task<Rate?> GetByPredicateAsync(System.Linq.Expressions.Expression<Func<Rate, bool>> predicate, CancellationToken token = default)
+        public async Task<Rate?> GetByPredicateAsync(Expression<Func<Rate, bool>> predicate, CancellationToken token = default)
         {
             return await _dbContext.Rates
                 .FirstOrDefaultAsync(predicate, token);

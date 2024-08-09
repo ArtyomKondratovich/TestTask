@@ -2,7 +2,7 @@
 {
     public class GetRatesDto
     {
-        public int Cur_ID { get; set; }
-        public DateOnly Date { get; set; }
+        public int? Cur_ID { get; set; }
+        public DateTime? Date { get; set; }
     }
 }
