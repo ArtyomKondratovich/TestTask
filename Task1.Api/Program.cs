@@ -1,8 +1,5 @@
 using Task1.Api.Configuration;
 using Serilog;
-using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Hosting;
-using Serilog.Events;
 
 namespace Task1
 {
@@ -48,11 +45,6 @@ namespace Task1
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                
-            }
-
             app.UseSwagger();
             app.UseSwaggerUI();
 
