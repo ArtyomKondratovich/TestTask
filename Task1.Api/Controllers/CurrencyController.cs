@@ -6,6 +6,8 @@ using Task1.Domain.Entities;
 
 namespace Task1.Api.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class CurrencyController : ControllerBase
     {
         private readonly ICurrencyService _service;

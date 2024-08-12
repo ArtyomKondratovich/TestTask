@@ -8,7 +8,9 @@ namespace Task1.DataAccess
         public DbSet<Rate> Rates { get; set; }
 
         public ApplicationDbContext(DbContextOptions options) : base(options)
-        {}
+        {
+            Database.Migrate();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

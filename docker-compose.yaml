@@ -1,0 +1,32 @@
+version: '3.4'
+
+networks:
+    dev:
+        driver: bridge
+
+services:
+    app:
+        image: api-image
+        container_name: dev-api
+        ports:
+            - "5436:80"
+        depends_on:
+            - postgresql
+        networks:
+            - dev
+            
+    postgresql:
+        image: postgres:latest
+        container_name: dev-pssql
+        environment:
+            - POSTGRES_DB=taskDb
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+        ports:
+            - "5400:5432"
+        volumes:
+            - ./data:/var/lib/postgresql/data
+        networks:
+            - dev
+volumes:
+    app_data:

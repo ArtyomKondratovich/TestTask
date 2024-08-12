@@ -36,7 +36,7 @@ namespace Task1.Business.Services.Implementations
                     var now = DateTime.UtcNow.Date;
 
                     // no parameters for predicate, checking rates for today
-                    predicate ??= (rate) => rate.Date == DateTime.UtcNow.Date;
+                    predicate ??= (rate) => rate.Date == DateTime.UtcNow;
 
                     // check data in local db
                     response.Value = await _repository.GetByFilterAsync(predicate);
@@ -68,12 +68,6 @@ namespace Task1.Business.Services.Implementations
 
                     if (rates != null)
                     {
-                        // fix error with postgre dateTime
-                        foreach (var rate in rates)
-                        {
-                            rate.Date = DateTime.SpecifyKind(rate.Date, DateTimeKind.Utc);
-                        }
-
                         await _repository.CreateRangeAsync(rates);
                     }
 
