@@ -16,23 +16,18 @@ namespace Task1
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Configuration.AddJsonFile("appsettings.personal.json", true);
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             #region Logging
 
             var logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(builder.Configuration)
-                .MinimumLevel.Verbose().MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", Serilog.Events.LogEventLevel.Warning)
-                .MinimumLevel.Verbose().MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Query", Serilog.Events.LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Command", Serilog.Events.LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.EntityFrameworkCore.Database.Query", Serilog.Events.LogEventLevel.Warning)
                 .CreateLogger();
 
             builder.Logging.ClearProviders();
             builder.Logging.AddSerilog(logger);
-
-            #endregion
-
-            #region DataAccess
-
-            builder.ConfigureDataAcess();
 
             #endregion
 
@@ -42,11 +37,21 @@ namespace Task1
 
             #endregion
 
+            #region DataAccess
+
+            builder.ConfigureDataAcess(isProduction: true);
+
+            #endregion
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
-            app.UseSwagger();
-            app.UseSwaggerUI();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
 
             app.UseHttpsRedirection();
 

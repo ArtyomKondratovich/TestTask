@@ -4,21 +4,30 @@ using Task1.Business.Services.Implementations;
 using Task1.DataAccess;
 using Task1.DataAccess.Repositories.Implementations;
 using Task1.DataAccess.Repositories.Interfaces;
-using ILogger = Serilog.ILogger;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Task1.Api.Configuration
 {
     public  static class ConfigurationExtensions
     {
         // TODO
-        public static void ConfigureDataAcess(this WebApplicationBuilder builder) 
+        public static void ConfigureDataAcess(this WebApplicationBuilder builder, bool isProduction) 
         {
-            builder.Services
+            if (isProduction)
+            {
+                builder.Services
                 .AddDbContext<ApplicationDbContext>(
                     options => options
-                    .UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL"))
+                    .UseNpgsql(builder.Configuration.GetConnectionString("PostgreDeploy"))
                 );
+            }
+            else 
+            {
+                builder.Services
+                .AddDbContext<ApplicationDbContext>(
+                    options => options
+                    .UseNpgsql(builder.Configuration.GetConnectionString("PostgreDebug"))
+                );
+            }
 
             builder.Services
                 .AddScoped<ICurrencyRepository>(
